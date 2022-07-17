@@ -1,0 +1,15 @@
+// 웹페이지 여백 제거
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// 스크롤바 제거
+body::-webkit-scrollbar {
+  display: none;
+}
+
+// 스크롤바 기능 제거
+body {
+  overflow: hidden;
+}

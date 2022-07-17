@@ -1,33 +1,35 @@
 import axios from "axios";
-import React, { Component } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
+import Picture from "./components/picture";
+import GetClock from "./components/clock";
 
-class App extends Component {
-  state = {
-    images: [],
-  };
-
-  getImages = () => {
+function App() {
+  const [imageUrl, setImageUrl] = useState([]);
+  const getImage = () => {
     axios
-      .get("https://api.unplash.com/photos/random", {
+      .get("https://api.unsplash.com/photos/random", {
         params: {
           client_id: "Access Key",
-          count: 30,
+          count: 1,
         },
       })
       .then((res) => {
-        this.setState({
-          images: [
-            ...this.state.images,
-            ...res.data.map((image) => image.urls.small),
-          ],
-        });
+        setImageUrl(res.data[0].urls.full);
       });
   };
 
-  render() {
-    return <div className="App">Let's start</div>;
-  }
+  useEffect(() => {
+    getImage();
+  }, []);
+
+  return (
+    <div className="App">
+      <h2 id="clock">00:00:00</h2>
+      <Picture imageUrl={imageUrl} />
+      <GetClock />
+    </div>
+  );
 }
 
 export default App;

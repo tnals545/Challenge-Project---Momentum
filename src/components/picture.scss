@@ -1,0 +1,14 @@
+// 이미지 중앙배치 및 비율 맞추기
+.background {
+  width: 100%;
+  height: auto;
+}
+
+.background > img {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  vertical-align: middle;
+}
