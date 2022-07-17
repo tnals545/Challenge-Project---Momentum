@@ -25,7 +25,6 @@ function App() {
 
   return (
     <div className="App">
-      <h2 id="clock">00:00:00</h2>
       <Picture imageUrl={imageUrl} />
       <GetClock />
     </div>
